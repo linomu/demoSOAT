@@ -8,7 +8,7 @@ import { AppLayoutComponent } from './components/layout/app.layout.component';
         RouterModule.forRoot(
             [
                 {
-                    path: '',
+                    path: 'soat',
                     component: AppLayoutComponent,
                     children: [
                         {
@@ -108,6 +108,13 @@ import { AppLayoutComponent } from './components/layout/app.layout.component';
                                 ).then((m) => m.PagesModule),
                         },
                     ],
+                },
+                {
+                    path: '',
+                    loadChildren: () =>
+                        import(
+                            './components/terminos-condiciones/terminos-condiciones.module'
+                        ).then((m) => m.TerminosCondicionesModule),
                 },
                 {
                     path: 'auth',

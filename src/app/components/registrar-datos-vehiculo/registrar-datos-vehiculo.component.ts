@@ -29,6 +29,9 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
     formularioCrear : boolean =  true;
     dialogoRegistro : boolean = false;
 
+    estadoRecaptcha = false;
+    isVisible=false;
+
     value1: any;
 
     value2: any;
@@ -208,6 +211,11 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
     aceptarActualizacion (){
         this.dialogoRegistro = false;
         this.router.navigate(['/soat']);
+    }
+
+    marcarCheck() {
+        this.estadoRecaptcha=!this.estadoRecaptcha; 
+        if(this.estadoRecaptcha){this.isVisible=false;}    
     }
 
 

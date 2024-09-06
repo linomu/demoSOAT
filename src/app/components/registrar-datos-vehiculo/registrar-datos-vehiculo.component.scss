@@ -1,0 +1,26 @@
+
+.c-centrado {
+    display: flex;
+    justify-content: center;
+}
+
+#robot {
+    margin: auto 2px auto auto;  
+    cursor: pointer;  
+}
+#checkRobot{
+    cursor: pointer;
+    
+}
+
+#recaptcha{
+    display: flex;
+    background: #f7f7f7;
+    border: solid 1px;
+    border-color: #e7e3e3;
+    border-radius: 4px;
+}
+.error{
+    color: rgb(166, 5, 5);
+    font-weight: bold;
+}

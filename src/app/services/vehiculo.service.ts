@@ -12,7 +12,7 @@ export class VehiculoService {
   obtenerPlacas(): Observable<any> {
     return this.http.get('assets/demo/data/placas-registradas.json')
     .pipe(
-      delay(2000),
+      delay(1000),
       /*map((response) => {
         console.log(response);
         return response;
@@ -24,7 +24,7 @@ export class VehiculoService {
   obtenerNumeroVin(): Observable<any> {
     return this.http.get('assets/demo/data/numero-vin-registrados.json')
     .pipe(
-      delay(2000),
+      delay(1000),
     );
   }
 }

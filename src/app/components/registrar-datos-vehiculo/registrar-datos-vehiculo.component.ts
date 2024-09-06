@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CountryService } from 'src/app/demo/service/country.service';
 import { MarcaVehiculoService } from 'src/app/demo/service/marca-vehiculo.service';
 import { VehiculoService } from 'src/app/services/vehiculo.service';
@@ -61,7 +61,8 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         private countryService: CountryService,
         private marcaVehiculoService: MarcaVehiculoService,
         private route: ActivatedRoute,
-        private vehiculoService: VehiculoService) {
+        private vehiculoService: VehiculoService,
+        private router: Router) {
         this.cities = [
             { name: 'New York', code: 'NY' },
             { name: 'Rome', code: 'RM' },
@@ -196,7 +197,17 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
     }
 
     crearVehiculo(){
+        this.router.navigate(['/soat/registrar-datos-propietario']);
+    }
 
+    cancelarBusqueda (){
+        this.visible = false;
+        this.router.navigate(['/soat']);
+    }
+
+    aceptarActualizacion (){
+        this.dialogoRegistro = false;
+        this.router.navigate(['/soat']);
     }
 
 

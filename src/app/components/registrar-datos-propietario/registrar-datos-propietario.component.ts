@@ -1,71 +1,79 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from 'src/app/demo/service/country.service';
 
 @Component({
-  selector: 'app-registrar-datos-propietario',
-  templateUrl: './registrar-datos-propietario.component.html',
-  styleUrl: './registrar-datos-propietario.component.scss'
+    selector: 'app-registrar-datos-propietario',
+    templateUrl: './registrar-datos-propietario.component.html',
+    styleUrl: './registrar-datos-propietario.component.scss',
 })
 export class RegistrarDatosPropietarioComponent {
-  countries: any[] = [];
+    tiposDocumento: any[];
+    tipoDocumento: any;
+    title: string;
 
-  cities: any[];
+    myForm: FormGroup;
 
-  filteredCountries: any[] = [];
+    usuario1: {
+        tipoDocumento: { name: string; code: string };
+        numeroDocumento: number;
+        nombres: string;
+        primerApellido: string;
+        segundoApellido: string;
+        numeroTarjeta: number;
+        correo: string;
+    } = {
+        tipoDocumento: { name: 'Cédula de ciudadanía', code: 'CC' },
+        numeroDocumento: 10881,
+        nombres: 'Carlos',
+        primerApellido: 'Raba',
+        segundoApellido: 'Baquero',
+        numeroTarjeta: 10881,
+        correo: 'raba@prueba.co',
+    };
 
-  value1: any;
+    constructor(private fb: FormBuilder) {
+        this.tiposDocumento = [
+            { name: 'Cédula de ciudadanía', code: 'CC' },
+            { name: 'Tarjeta de identidad', code: 'TI' },
+            { name: 'Cédula de extranjería', code: 'CE' },
+            { name: 'Pasaporte', code: 'PA' },
+            { name: 'Registro civil', code: 'RC' },
+            { name: 'NIT', code: 'NIT' },
+        ];
 
-  value2: any;
+        this.title = 'Inscripción de registro de los datos del propietario';
+    }
 
-  value3: any;
+    ngOnInit() {
+        this.myForm = this.fb.group({
+            tipoDocumento: [null, Validators.required],
+            numeroDocumento: [null, [Validators.required, Validators.min(1)]],
+            nombres: ['', Validators.required],
+            primerApellido: ['', Validators.required],
+            segundoApellido: ['', Validators.required],
+            numeroTarjeta: [null, [Validators.required, Validators.min(1)]],
+            correo: ['', [Validators.required, Validators.email]],
+        });
+    }
 
-  value4: any;
+    cargarDatosFormulario() {
+        this.myForm.patchValue({
+            tipoDocumento: this.usuario1.tipoDocumento,
+            numeroDocumento: this.usuario1.numeroDocumento,
+            nombres: this.usuario1.nombres,
+            primerApellido: this.usuario1.primerApellido,
+            segundoApellido: this.usuario1.segundoApellido,
+            numeroTarjeta: this.usuario1.numeroTarjeta,
+            correo: this.usuario1.correo,
+        });
+    }
 
-  value5: any;
-
-  value6: any;
-
-  value7: any;
-
-  value8: any;
-
-  value9: any;
-
-  value10: any;
-
-  value11: any;
-
-  value12: any;
-
-  constructor(private countryService: CountryService) {
-      this.cities = [
-          {name: 'New York', code: 'NY'},
-          {name: 'Rome', code: 'RM'},
-          {name: 'London', code: 'LDN'},
-          {name: 'Istanbul', code: 'IST'},
-          {name: 'Paris', code: 'PRS'}
-      ];
-  }
-
-  ngOnInit() {
-      this.countryService.getCountries().then(countries => {
-          this.countries = countries;
-      });
-  }
-
-  searchCountry(event: any) {
-      // in a real application, make a request to a remote url with the query and
-      // return filtered results, for demo we filter at client side
-      const filtered: any[] = [];
-      const query = event.query;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.countries.length; i++) {
-          const country = this.countries[i];
-          if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-              filtered.push(country);
-          }
-      }
-
-      this.filteredCountries = filtered;
-  }
+    onSubmit() {
+        if (this.myForm.valid) {
+            console.log(this.myForm.value);
+        } else {
+            console.log('Form not valid');
+        }
+    }
 }

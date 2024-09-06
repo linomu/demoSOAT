@@ -1,139 +1,73 @@
-<div class="card">
-    <h5>Just for Diego</h5> 
-    <p-divider />
-    <div class="grid p-fluid mt-3">
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <input
-                    type="text"
-                    id="inputtext"
-                    pInputText
-                    [(ngModel)]="value1"
-                />
-                <label for="inputtext">InputText</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-autoComplete
-                    inputId="autocomplete"
-                    [(ngModel)]="value2"
-                    [suggestions]="filteredCountries"
-                    (completeMethod)="searchCountry($event)"
-                    field="name"
-                ></p-autoComplete>
-                <label for="autocomplete">AutoComplete</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input
-                    type="text"
-                    id="lefticon"
-                    pInputText
-                    [(ngModel)]="value3"
-                />
-                <label for="lefticon">Left Icon</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label p-input-icon-right">
-                <input
-                    type="text"
-                    id="righticon"
-                    pInputText
-                    [(ngModel)]="value4"
-                />
-                <label for="righticon">Right Icon</label>
-                <i class="pi pi-spin pi-spinner"></i>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-calendar
-                    inputId="calendar"
-                    [(ngModel)]="value5"
-                ></p-calendar>
-                <label for="calendar">Calendar</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-chips inputId="chips" [(ngModel)]="value6"></p-chips>
-                <label for="chips">Chips</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-inputMask
-                    inputId="inputmask"
-                    mask="99/99/9999"
-                    [(ngModel)]="value7"
-                ></p-inputMask>
-                <label for="inputmask">InputMask</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-inputNumber
-                    inputId="inputnumber"
-                    [(ngModel)]="value8"
-                ></p-inputNumber>
-                <label for="inputnumber">InputNumber</label>
-            </span>
-        </div>
-        <div class="field col-12 md:col-4">
-            <p-inputGroup>
-                <p-inputGroupAddon>
-                    <i class="pi pi-user"></i>
-                </p-inputGroupAddon>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+        <h5>{{title}}</h5>
+        <p-divider></p-divider>
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
                 <span class="p-float-label">
-                    <input
-                        type="text"
-                        inputId="inputgroup"
-                        pInputText
-                        [(ngModel)]="value9"
-                    />
-                    <label for="inputgroup">InputGroup</label>
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tiposDocumento"
+                        formControlName="tipoDocumento" optionLabel="name"></p-dropdown>
+                    <label for="dropdown">Tipo de documento</label>
                 </span>
-            </p-inputGroup>
+                <div *ngIf="myForm.get('tipoDocumento').invalid && myForm.get('tipoDocumento').touched" class="error">
+                    Este campo es obligatorio.</div>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-inputNumber inputId="inputnumber" formControlName="numeroDocumento"></p-inputNumber>
+                    <label for="inputnumber">Número de documento</label>
+                </span>
+                <div *ngIf="myForm.get('numeroDocumento').invalid && myForm.get('numeroDocumento').touched"
+                    class="error">Este campo es obligatorio y debe ser un número positivo.</div>
+            </div>
         </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-dropdown
-                    inputId="dropdown"
-                    [autoDisplayFirst]="false"
-                    [options]="cities"
-                    [(ngModel)]="value10"
-                    optionLabel="name"
-                ></p-dropdown>
-                <label for="dropdown">Dropdown</label>
-            </span>
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="nombres" />
+                    <label for="inputtext">Nombres</label>
+                </span>
+                <div *ngIf="myForm.get('nombres').invalid && myForm.get('nombres').touched" class="error">Este campo es
+                    obligatorio.</div>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="primerApellido" />
+                    <label for="inputtext">Primer apellido</label>
+                </span>
+                <div *ngIf="myForm.get('primerApellido').invalid && myForm.get('primerApellido').touched" class="error">
+                    Este campo es obligatorio.</div>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="segundoApellido" />
+                    <label for="inputtext">Segundo apellido</label>
+                </span>
+                <div *ngIf="myForm.get('segundoApellido').invalid && myForm.get('segundoApellido').touched"
+                    class="error">Este campo es obligatorio.</div>
+            </div>
         </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <p-multiSelect
-                    inputId="multiselect"
-                    [options]="cities"
-                    [(ngModel)]="value11"
-                    optionLabel="name"
-                    [filter]="false"
-                ></p-multiSelect>
-                <label for="multiselect">MultiSelect</label>
-            </span>
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-inputNumber inputId="inputnumber" formControlName="numeroTarjeta"></p-inputNumber>
+                    <label for="inputnumber">Número de tarjeta de propiedad</label>
+                </span>
+                <div *ngIf="myForm.get('numeroTarjeta').invalid && myForm.get('numeroTarjeta').touched" class="error">
+                    Este campo es obligatorio y debe ser un número positivo.</div>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="correo" />
+                    <label for="inputtext">Correo electrónico</label>
+                </span>
+                <div *ngIf="myForm.get('correo').invalid && myForm.get('correo').touched" class="error">Este campo es
+                    obligatorio y debe ser un correo válido.</div>
+            </div>
         </div>
-        <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <textarea
-                    inputId="textarea"
-                    rows="3"
-                    cols="30"
-                    [(ngModel)]="value12"
-                    pInputTextarea
-                ></textarea>
-                <label for="textarea">Textarea</label>
-            </span>
-        </div>
+        <section class="btn-section">
+            <button pButton pRipple type="button" label="Anterior" class="p-button-outlined"></button>
+            <button pButton pRipple type="submit" label="Siguiente" class="p-button-info"></button>
+        </section>
     </div>
-</div>
+</form>

@@ -1,44 +1,27 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { RegistrarDatosPropietarioRoutingModule } from './registrar-datos-propietario-routing.module';
-import { FormsModule } from '@angular/forms';
-import { FloatlabelDemoRoutingModule } from 'src/app/demo/components/uikit/floatlabel/floatlabeldemo-routing.module';
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { CalendarModule } from 'primeng/calendar';
-import { ChipsModule } from 'primeng/chips';
-import { DropdownModule } from 'primeng/dropdown';
-import { InputMaskModule } from 'primeng/inputmask';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { CascadeSelectModule } from 'primeng/cascadeselect';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { RegistrarDatosPropietarioRoutingModule } from './registrar-datos-propietario-routing.module';
 import { RegistrarDatosPropietarioComponent } from './registrar-datos-propietario.component';
 
-
 @NgModule({
-	declarations: [RegistrarDatosPropietarioComponent],
-	imports: [
-		CommonModule,
-		FormsModule,
-		AutoCompleteModule,
-		CalendarModule,
-		ChipsModule,
-		DropdownModule,
-		InputMaskModule,
-		InputNumberModule,
-		CascadeSelectModule,
-		MultiSelectModule,
-		InputTextareaModule,
-		InputTextModule,
-		DividerModule,
-		InputGroupModule,
-		InputGroupAddonModule,
-		RegistrarDatosPropietarioRoutingModule
-	]
+    declarations: [RegistrarDatosPropietarioComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        InputTextModule,
+        RegistrarDatosPropietarioRoutingModule,
+        DividerModule,
+        DropdownModule,
+        InputNumberModule,
+        ButtonModule,
+        ReactiveFormsModule,
+    ],
 })
-export class RegistrarDatosPropietarioModule { }
+export class RegistrarDatosPropietarioModule {}

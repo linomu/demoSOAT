@@ -1,1 +1,24 @@
-<p>comprar-soat works!</p>
+<div class="card">
+    <h5>Inscripción de registro de los datos del propietario</h5>
+    <p-divider></p-divider>
+    <h6>Por favor, seleccione la aseguradora de su preferencia para adquirir el Seguro Obligatorio de Tránsito (SOAT).
+    </h6>
+    <div class="grid p-fluid mt-3">
+        @for (item of aseguradoras; track $index) {
+        <div class="field col-12 md:col-4">
+            <p-card class="card-section">
+                <div class="card-content">
+                    <div class="card-image">
+                        <img src="{{item.image}}" alt="{{item.name}}" class="img-fluid">
+                    </div>
+                    <div class="card-details">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p-button label="Comprar SOAT" class="p-button-success"
+                            (click)="seleccionarAseguradora(item)"></p-button>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+        }
+    </div>
+</div>

@@ -9,13 +9,13 @@
 }
 
 .card-image img {
-    width: 140px;
-    height: auto;
-    object-fit: cover;
-    margin-right: 1rem;
+    object-fit: contain;
+    width: 100%;
+    aspect-ratio: 3/2;
 }
 
 .card-details {
+    text-align: center;
     flex: 1;
 }
 
@@ -28,13 +28,22 @@
 }
 
 .card-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #23108d;
     border-radius: 3px;
 }
 
+.card-section {
+    min-width: 100px !important;
+}
+
 ::ng-deep .p-card-body {
     height: 200px;
+    width: fit-content;
     align-content: center;
+}
+
+.p-button-outlined {
+    max-width: 10rem;
 }

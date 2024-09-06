@@ -67,7 +67,16 @@
         </div>
         <section class="btn-section">
             <button pButton pRipple type="button" label="Anterior" class="p-button-outlined"></button>
-            <button pButton pRipple type="submit" label="Siguiente" class="p-button-info"></button>
+            <button pButton pRipple type="submit" [label]="btn_title" class="p-button-info"></button>
         </section>
     </div>
 </form>
+
+<p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '60rem' }" class="dialog-section">
+    <p>
+        Se modifico la información del propietario exitosamente para la placa asociada.
+    </p>
+    <p>
+        Se realizó el envió de correo electrónico al propietario del vehículo con la modificación.
+    </p>
+</p-dialog>

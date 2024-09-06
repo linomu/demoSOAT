@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CountryService } from 'src/app/demo/service/country.service';
 
 @Component({
@@ -11,6 +12,10 @@ export class RegistrarDatosPropietarioComponent {
     tiposDocumento: any[];
     tipoDocumento: any;
     title: string;
+    id: number;
+    btn_title: string = 'Siguiente';
+    visible: boolean = false;
+    funcion_registrar: boolean = true;
 
     myForm: FormGroup;
 
@@ -32,7 +37,7 @@ export class RegistrarDatosPropietarioComponent {
         correo: 'raba@prueba.co',
     };
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private route: ActivatedRoute) {
         this.tiposDocumento = [
             { name: 'Cédula de ciudadanía', code: 'CC' },
             { name: 'Tarjeta de identidad', code: 'TI' },
@@ -55,9 +60,19 @@ export class RegistrarDatosPropietarioComponent {
             numeroTarjeta: [null, [Validators.required, Validators.min(1)]],
             correo: ['', [Validators.required, Validators.email]],
         });
+
+        this.route.paramMap.subscribe((params: ParamMap) => {
+            this.id = +params.get('id');
+            if (this.id) {
+                this.cargarDatosFormulario();
+                this.funcion_registrar = false;
+            }
+        });
     }
 
     cargarDatosFormulario() {
+        this.title = 'Modificación de registro de los datos del propietario';
+        this.btn_title = 'Modificar';
         this.myForm.patchValue({
             tipoDocumento: this.usuario1.tipoDocumento,
             numeroDocumento: this.usuario1.numeroDocumento,
@@ -71,9 +86,16 @@ export class RegistrarDatosPropietarioComponent {
 
     onSubmit() {
         if (this.myForm.valid) {
+            if (!this.funcion_registrar) {
+                this.abrirModalModificacion();
+            }
             console.log(this.myForm.value);
         } else {
             console.log('Form not valid');
         }
+    }
+
+    abrirModalModificacion() {
+        this.visible = true;
     }
 }

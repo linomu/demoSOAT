@@ -1,4 +1,4 @@
-@if(id){
+@if(!formularioCrear){
 
 } @else{
 <div class="card">
@@ -221,14 +221,13 @@
         <button pButton pRipple type="button" label="Siguiente" class="p-button-info"
             [disabled]="!formVehiculo.valid"></button>
     </div>
-    {{formVehiculo.value | json}}
 </div>
 
 }
 
 
 
-<p-dialog header="Modificar Información" [modal]="true" [(visible)]="visible" [style]="{ width: '40rem' }">
+<p-dialog header="Modificar Información" [modal]="true" [(visible)]="visible" [style]="{ width: '40rem', height: '35rem' }">
     <div class="grid p-fluid mt-3">
 
         <div class="field col-12 md:col-6">

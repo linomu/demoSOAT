@@ -26,6 +26,8 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
     filteredCountries: any[] = [];
     filteredMarcaVehiculos: any[] = [];
 
+    formularioCrear : boolean =  true;
+
     value1: any;
 
     value2: any;
@@ -109,8 +111,8 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         capacidadCarga: new FormControl(null,),
         tipoServicio: new FormControl(null, [Validators.required]),
         tipoCarroceria: new FormControl(null, [Validators.required]),
-        tipoCombustible : new FormControl(null,),
-        tipoRadioOperacion : new FormControl(null,),
+        tipoCombustible: new FormControl(null,),
+        tipoRadioOperacion: new FormControl(null,),
     }, []);
 
     ngOnInit() {
@@ -118,6 +120,7 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         this.route.paramMap.subscribe((params: ParamMap) => {
             this.id = +params.get('id');
             if (this.id) {
+                this.formularioCrear = false;
                 this.abrirModalConsulta();
             }
         });
@@ -166,6 +169,10 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         }
 
         this.filteredMarcaVehiculos = filtered;
+    }
+
+    consultarVehiculo() {
+        this.formularioCrear = false;
     }
 
 

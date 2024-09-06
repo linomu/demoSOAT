@@ -1,17 +1,64 @@
-<div class="grid">
-    <div class="col-2">
-        <img src="assets/images/logo-runt.png"
-            alt="Logo Runt" height="20"  />
-    </div>
-</div>
-<div class="grid">    
-        <div class="col-6">
-            <img src="assets/images/bg-1.png"
-                alt="fondo ondas" height="600"/>
+<div class="container">
+    <div class="grid">
+        <div class="col-2">
+            <img src="assets/images/logo-runt.png" alt="Logo Runt" height="20" />
         </div>
+    </div>
+    <div class="grid ">
         <div class="col-6">
-            <button (click)="navegarAInicio()">Ir a Inicio</button>
-        </div>  
-</div>
-<app-footer></app-footer>
+            <img src="assets/images/bg-1.png" alt="fondo ondas" height="600" />
+        </div>
+        <div class="col-6" id="texto">
 
+            <h1>Política de ingreso a las aplicaciones RUNT 2.0 SAS</h1>
+            <p>
+                Conozca la declaración de la Política de los Sistemas de Gestión de Calidad y Seguridad de la
+                Información
+                de la Concesión RUNT 2.0 SAS La Concesión RUNT 2.0 S.A.S administra
+                , opera, mantiene y explota comercialmente el Registro Único Nacional de Tránsito y gestiona la
+                información
+                allí registrada, a través de una plataforma vanguardista ofreciendo a los usuarios una experiencia ágil
+                y
+                amigable con criterios de seguridad, calidad y confiabilidad.
+            </p>
+            <p>
+                Basados en la gestión de los riesgos, la protección de datos personales, la seguridad de la información,
+                la
+                continuidad del negocio y el cumplimiento de la normatividad legal aplicable, en pro de la mejora
+                continua
+                del sistema de gestión.
+            </p>
+            <hr>
+            <p>
+                Aceptación políticas de Protección de datos Personales y Sensibles de los Sistemas HQ-RUNT y RUNTPRO
+                Para
+                ingresar a los aplicativos HQ-RUNT Y RUNTPRO, es necesario que Ud. conozca la Políticas de tratamiento
+                de la
+                información personal de la Concesión RUNT 2.0 S.A.S., que se encuentran publicadas en este link, Si
+                acepta
+                las condiciones allí expuestas, haga clic en Aceptar, de lo contrario infórmenos a través del
+                procedimiento establecido en dicho documento.
+            </p>
+            <hr>
+            <div class="grid ">
+                <div class="col-12 c-centrado">                    
+                    <span class="error" *ngIf="isVisible">Campo obligatorio*</span>                    
+                    <div id="recaptcha">
+                        <label id="robot">
+                            <input type="checkbox" (click)="marcarCheck()" id="checkRobot" name="robot" value="no">
+                            No soy un robot
+                        </label>
+                        <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" />
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="grid ">
+                <div class="col-12 c-centrado">
+                    <button class="button" (click)="navegarAInicio()">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

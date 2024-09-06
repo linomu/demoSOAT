@@ -10,6 +10,6 @@ import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
     declarations: [TerminosCondicionesComponent,],
-    imports: [TerminosCondicionesRoutingModule, FooterModule],
+    imports: [TerminosCondicionesRoutingModule, FooterModule,CommonModule],
 })
 export class TerminosCondicionesModule {}

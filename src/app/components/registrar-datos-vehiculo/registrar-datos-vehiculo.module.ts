@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RegistrarDatosVehiculoRoutingModule } from './registrar-datos-vehiculo-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CalendarModule } from 'primeng/calendar';
 import { ChipsModule } from 'primeng/chips';
@@ -39,7 +39,9 @@ import { RegistrarDatosVehiculoComponent } from './registrar-datos-vehiculo.comp
 		InputGroupModule,
 		InputGroupAddonModule,
 		DividerModule,
-        RegistrarDatosVehiculoRoutingModule
+        RegistrarDatosVehiculoRoutingModule,
+		FormsModule,
+		ReactiveFormsModule
   ]
 })
 export class RegistrarDatosVehiculoModule { }

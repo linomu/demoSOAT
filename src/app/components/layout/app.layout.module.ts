@@ -11,7 +11,6 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { RippleModule } from 'primeng/ripple';
 import { SidebarModule } from 'primeng/sidebar';
 import { AppConfigModule } from 'src/app/layout/config/config.module';
-import { AppFooterComponent } from '../footer/app.footer.component';
 import { InicioModule } from '../inicio/inicio.module';
 import { AppMenuComponent } from '../menu/app.menu.component';
 import { AppMenuitemComponent } from '../menu/app.menuitem.component';
@@ -23,12 +22,13 @@ import { AppLayoutComponent } from './app.layout.component';
 import { ConsultarRegistroModule } from '../consultar-registro/consultar-registro.module';
 import { ComprarSoatModule } from '../comprar-soat/comprar-soat.module';
 import { ConsultarSoatModule } from '../consultar-soat/consultar-soat.module';
+import { SharedModule } from 'primeng/api';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
     declarations: [
         AppMenuitemComponent,
         AppTopBarComponent,
-        AppFooterComponent,
         AppMenuComponent,
         AppSidebarComponent,
         AppLayoutComponent,
@@ -52,6 +52,8 @@ import { ConsultarSoatModule } from '../consultar-soat/consultar-soat.module';
         ConsultarRegistroModule,
         ComprarSoatModule,
         ConsultarSoatModule,
+        SharedModule,
+        FooterModule
     ],
     exports: [AppLayoutComponent],
 })

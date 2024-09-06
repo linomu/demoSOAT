@@ -15,13 +15,20 @@ import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { AppLayoutModule } from './components/layout/app.layout.module';
+import { MarcaVehiculoService } from './demo/service/marca-vehiculo.service';
+
+import { FooterModule } from './components/footer/footer.module';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule],
+    imports: [
+        AppRoutingModule,
+        AppLayoutModule,
+        FooterModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService,
+        MarcaVehiculoService,
         CustomerService,
         EventService,
         IconService,

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CountryService } from 'src/app/demo/service/country.service';
+import { MarcaVehiculoService } from 'src/app/demo/service/marca-vehiculo.service';
+import { VehiculoService } from 'src/app/services/vehiculo.service';
+import { numeroVinVehiculoValidationAsync } from 'src/app/utils/validators/form-vehiculo-numero-vin';
+import { placaVehiculoValidationAsync } from 'src/app/utils/validators/form-vehiculo-placa';
 
 @Component({
     selector: 'app-registrar-datos-vehiculo',
@@ -9,10 +14,17 @@ import { CountryService } from 'src/app/demo/service/country.service';
 })
 export class RegistrarDatosVehiculoComponent implements OnInit {
     countries: any[] = [];
+    marcaVehiculos: any[] = [];
 
     cities: any[];
+    claseVehiculos: any[];
+    tipoServicios: any[];
+    tipoCarrocerias: any[];
+    tipoCombustibles: any[];
+    tipoRadioOperaciones: any[];
 
     filteredCountries: any[] = [];
+    filteredMarcaVehiculos: any[] = [];
 
     value1: any;
 
@@ -42,7 +54,11 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
 
     visible: boolean = false;
 
-    constructor(private countryService: CountryService, private route: ActivatedRoute) {
+    constructor(
+        private countryService: CountryService,
+        private marcaVehiculoService: MarcaVehiculoService,
+        private route: ActivatedRoute,
+        private vehiculoService: VehiculoService) {
         this.cities = [
             { name: 'New York', code: 'NY' },
             { name: 'Rome', code: 'RM' },
@@ -50,13 +66,58 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
             { name: 'Istanbul', code: 'IST' },
             { name: 'Paris', code: 'PRS' }
         ];
+        this.claseVehiculos = [
+            { name: 'Camioneta', code: 'cam' },
+            { name: 'Vehiculo', code: 'veh' },
+            { name: 'Transporte', code: 'tra' },
+        ];
+        this.tipoServicios = [
+            { name: 'Publico', code: 'pub' },
+            { name: 'Particular', code: 'par' },
+        ];
+        this.tipoCarrocerias = [
+            { name: 'Sedán', code: 'sed' },
+            { name: 'Hatchback', code: 'hat' },
+            { name: 'Suv', code: 'suv' },
+            { name: 'Crossover', code: 'cro' },
+            { name: 'Coupe', code: 'cou' },
+        ];
+        this.tipoCombustibles = [
+            { name: 'Gasolina', code: 'gas' },
+            { name: 'ACPM', code: 'acpm' },
+        ]
+        this.tipoRadioOperaciones = [
+            { name: 'Urbano', code: 'urb' },
+            { name: 'Rural', code: 'rur' },
+        ];
+
     }
+
+    formVehiculo = new FormGroup({
+        placa: new FormControl(null, [Validators.required], [placaVehiculoValidationAsync(this.vehiculoService)]),
+        pais: new FormControl(null, [Validators.required]),
+        marca: new FormControl(null, [Validators.required]),
+        modelo: new FormControl(null,),
+        numeroVin: new FormControl(null, [Validators.required], [numeroVinVehiculoValidationAsync(this.vehiculoService)]),
+        numeroMotor: new FormControl(null, [Validators.required]),
+        numeroChasis: new FormControl(null,),
+        numeroSerie: new FormControl(null,),
+        cilindraje: new FormControl(null,),
+        claseVehiculo: new FormControl(null, [Validators.required]),
+        capacidadPasajeros: new FormControl(null,),
+        capacidadPasajerosSentados: new FormControl(null,),
+        capacidadCarga: new FormControl(null,),
+        tipoServicio: new FormControl(null, [Validators.required]),
+        tipoCarroceria: new FormControl(null, [Validators.required]),
+        tipoCombustible : new FormControl(null,),
+        tipoRadioOperacion : new FormControl(null,),
+    }, []);
 
     ngOnInit() {
 
         this.route.paramMap.subscribe((params: ParamMap) => {
             this.id = +params.get('id');
-            if(this.id){
+            if (this.id) {
                 this.abrirModalConsulta();
             }
         });
@@ -64,9 +125,14 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         this.countryService.getCountries().then(countries => {
             this.countries = countries;
         });
+
+        this.marcaVehiculoService.getMarcaVehiculos().then(marcas => {
+            this.marcaVehiculos = marcas;
+        })
+
     }
 
-    abrirModalConsulta(){
+    abrirModalConsulta() {
         this.visible = true;
     }
 
@@ -85,4 +151,64 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
 
         this.filteredCountries = filtered;
     }
+
+    searchMarcaVehiculos(event: any) {
+        // in a real application, make a request to a remote url with the query and
+        // return filtered results, for demo we filter at client side
+        const filtered: any[] = [];
+        const query = event.query;
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.marcaVehiculos.length; i++) {
+            const marca = this.marcaVehiculos[i];
+            if (marca.nombre.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+                filtered.push(marca);
+            }
+        }
+
+        this.filteredMarcaVehiculos = filtered;
+    }
+
+
+    get placaControl(): FormControl {
+        return this.formVehiculo.get('placa') as FormControl;
+    }
+
+    get paisControl(): FormControl {
+        return this.formVehiculo.get('pais') as FormControl;
+    }
+
+    get marcaControl(): FormControl {
+        return this.formVehiculo.get('marca') as FormControl;
+    }
+
+    get modeloControl(): FormControl {
+        return this.formVehiculo.get('modelo') as FormControl;
+    }
+
+    get numberoVinControl(): FormControl {
+        return this.formVehiculo.get('numeroVin') as FormControl;
+    }
+
+    get numeroMotorControl(): FormControl {
+        return this.formVehiculo.get('numeroMotor') as FormControl;
+    }
+
+    get claseVehiculoControl(): FormControl {
+        return this.formVehiculo.get('claseVehiculo') as FormControl;
+    }
+
+    get numeroSerieControl(): FormControl {
+        return this.formVehiculo.get('numeroSerie') as FormControl;
+    }
+
+    get tipoServicioControl(): FormControl {
+        return this.formVehiculo.get('tipoServicio') as FormControl;
+    }
+
+    get tipoCarroceriaControl(): FormControl {
+        return this.formVehiculo.get('tipoCarroceria') as FormControl;
+    }
+
+
 }
+

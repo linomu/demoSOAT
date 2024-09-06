@@ -16,6 +16,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { DividerModule } from 'primeng/divider';
+import { DialogModule } from 'primeng/dialog';
 import { RegistrarDatosVehiculoComponent } from './registrar-datos-vehiculo.component';
 
 
@@ -28,6 +29,7 @@ import { RegistrarDatosVehiculoComponent } from './registrar-datos-vehiculo.comp
 		CalendarModule,
 		ChipsModule,
 		DropdownModule,
+		DialogModule,
 		InputMaskModule,
 		InputNumberModule,
 		CascadeSelectModule,

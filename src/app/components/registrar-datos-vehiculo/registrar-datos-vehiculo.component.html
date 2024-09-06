@@ -1,139 +1,189 @@
+@if(id){
+
+} @else{
 <div class="card">
     <h5>Inscripción de registro de los datos del vehículo</h5>
     <p-divider />
     <div class="grid p-fluid mt-3">
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <input
-                    type="text"
-                    id="inputtext"
-                    pInputText
-                    [(ngModel)]="value1"
-                />
-                <label for="inputtext">InputText</label>
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de placa</label>
             </span>
         </div>
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-autoComplete
-                    inputId="autocomplete"
-                    [(ngModel)]="value2"
-                    [suggestions]="filteredCountries"
-                    (completeMethod)="searchCountry($event)"
-                    field="name"
-                ></p-autoComplete>
-                <label for="autocomplete">AutoComplete</label>
+                <p-autoComplete inputId="autocomplete" [(ngModel)]="value2" [suggestions]="filteredCountries"
+                    (completeMethod)="searchCountry($event)" field="name"></p-autoComplete>
+                <label for="autocomplete">País de Origen</label>
             </span>
         </div>
+
+
         <div class="field col-12 md:col-4">
-            <span class="p-float-label p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input
-                    type="text"
-                    id="lefticon"
-                    pInputText
-                    [(ngModel)]="value3"
-                />
-                <label for="lefticon">Left Icon</label>
+            <span class="p-float-label">
+                <p-autoComplete inputId="autocomplete" [(ngModel)]="value2" [suggestions]="filteredCountries"
+                    (completeMethod)="searchCountry($event)" field="name"></p-autoComplete>
+                <label for="autocomplete">Marca</label>
             </span>
         </div>
+
+
         <div class="field col-12 md:col-4">
-            <span class="p-float-label p-input-icon-right">
-                <input
-                    type="text"
-                    id="righticon"
-                    pInputText
-                    [(ngModel)]="value4"
-                />
-                <label for="righticon">Right Icon</label>
-                <i class="pi pi-spin pi-spinner"></i>
+            <span class="p-float-label">
+                <p-inputNumber inputId="inputnumber" [(ngModel)]="value8"></p-inputNumber>
+                <label for="inputnumber">Modelo (año)</label>
             </span>
         </div>
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-calendar
-                    inputId="calendar"
-                    [(ngModel)]="value5"
-                ></p-calendar>
-                <label for="calendar">Calendar</label>
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de VIN</label>
             </span>
         </div>
+
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-chips inputId="chips" [(ngModel)]="value6"></p-chips>
-                <label for="chips">Chips</label>
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de motor</label>
             </span>
         </div>
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-inputMask
-                    inputId="inputmask"
-                    mask="99/99/9999"
-                    [(ngModel)]="value7"
-                ></p-inputMask>
-                <label for="inputmask">InputMask</label>
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de chasis</label>
             </span>
         </div>
+
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-inputNumber
-                    inputId="inputnumber"
-                    [(ngModel)]="value8"
-                ></p-inputNumber>
-                <label for="inputnumber">InputNumber</label>
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de serie</label>
             </span>
         </div>
-        <div class="field col-12 md:col-4">
-            <p-inputGroup>
-                <p-inputGroupAddon>
-                    <i class="pi pi-user"></i>
-                </p-inputGroupAddon>
-                <span class="p-float-label">
-                    <input
-                        type="text"
-                        inputId="inputgroup"
-                        pInputText
-                        [(ngModel)]="value9"
-                    />
-                    <label for="inputgroup">InputGroup</label>
-                </span>
-            </p-inputGroup>
-        </div>
+
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-dropdown
-                    inputId="dropdown"
-                    [autoDisplayFirst]="false"
-                    [options]="cities"
-                    [(ngModel)]="value10"
-                    optionLabel="name"
-                ></p-dropdown>
-                <label for="dropdown">Dropdown</label>
+                <p-inputNumber inputId="inputnumber" [(ngModel)]="value8"></p-inputNumber>
+                <label for="inputnumber">Cilindraje</label>
             </span>
         </div>
+
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <p-multiSelect
-                    inputId="multiselect"
-                    [options]="cities"
-                    [(ngModel)]="value11"
-                    optionLabel="name"
-                    [filter]="false"
-                ></p-multiSelect>
-                <label for="multiselect">MultiSelect</label>
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                    optionLabel="name"></p-dropdown>
+                <label for="dropdown">Clase de vehículo</label>
             </span>
         </div>
+
         <div class="field col-12 md:col-4">
             <span class="p-float-label">
-                <textarea
-                    inputId="textarea"
-                    rows="3"
-                    cols="30"
-                    [(ngModel)]="value12"
-                    pInputTextarea
-                ></textarea>
-                <label for="textarea">Textarea</label>
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Capacidad total de pasajeros</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Capacidad total de pasajeros sentados</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Capacidad de carga Kg</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                    optionLabel="name"></p-dropdown>
+                <label for="dropdown">Tipo de servicio</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                    optionLabel="name"></p-dropdown>
+                <label for="dropdown">Tipo de carrocería</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                    optionLabel="name"></p-dropdown>
+                <label for="dropdown">Tipo de combustible</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                    optionLabel="name"></p-dropdown>
+                <label for="dropdown">Radio de operación</label>
             </span>
         </div>
     </div>
+
+    <div class="flex justify-content-end flex-wrap">
+        <button pButton pRipple type="button" label="Siguiente" class="p-button-info"></button>
+    </div>
 </div>
+
+}
+
+
+
+<p-dialog header="Modificar Información" [modal]="true" [(visible)]="visible" [style]="{ width: '40rem' }">
+    <div class="grid p-fluid mt-3">
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-autoComplete inputId="autocomplete" [(ngModel)]="value2" [suggestions]="filteredCountries"
+                    (completeMethod)="searchCountry($event)" field="name"></p-autoComplete>
+                <label for="autocomplete">País de Origen</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de placa</label>
+            </span>
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                    optionLabel="name"></p-dropdown>
+                <label for="dropdown">Clase de vehículo</label>
+            </span>
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-inputNumber inputId="inputnumber" [(ngModel)]="value8"></p-inputNumber>
+                <label for="inputnumber">Cilindraje</label>
+            </span>
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancelar" severity="secondary" (onClick)="visible = false" />
+        <p-button label="Consultar" (onClick)="visible = false" />
+    </div>
+</p-dialog>

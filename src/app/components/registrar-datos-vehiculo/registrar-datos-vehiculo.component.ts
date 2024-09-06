@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountryService } from 'src/app/demo/service/country.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { CountryService } from 'src/app/demo/service/country.service';
   templateUrl: './registrar-datos-vehiculo.component.html',
   styleUrl: './registrar-datos-vehiculo.component.scss'
 })
-export class RegistrarDatosVehiculoComponent {
+export class RegistrarDatosVehiculoComponent implements OnInit {
   countries: any[] = [];
 
   cities: any[];

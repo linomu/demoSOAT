@@ -16,15 +16,15 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DividerModule } from 'primeng/divider';
 import { RegistrarDatosPropietarioComponent } from './registrar-datos-propietario.component';
 
 
 @NgModule({
-  declarations: [RegistrarDatosPropietarioComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-		FloatlabelDemoRoutingModule,
+	declarations: [RegistrarDatosPropietarioComponent],
+	imports: [
+		CommonModule,
+		FormsModule,
 		AutoCompleteModule,
 		CalendarModule,
 		ChipsModule,
@@ -35,9 +35,10 @@ import { RegistrarDatosPropietarioComponent } from './registrar-datos-propietari
 		MultiSelectModule,
 		InputTextareaModule,
 		InputTextModule,
+		DividerModule,
 		InputGroupModule,
 		InputGroupAddonModule,
-    RegistrarDatosPropietarioRoutingModule
-  ]
+		RegistrarDatosPropietarioRoutingModule
+	]
 })
 export class RegistrarDatosPropietarioModule { }

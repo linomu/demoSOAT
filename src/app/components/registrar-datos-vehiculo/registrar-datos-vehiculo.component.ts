@@ -27,6 +27,7 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
     filteredMarcaVehiculos: any[] = [];
 
     formularioCrear : boolean =  true;
+    dialogoRegistro : boolean = false;
 
     value1: any;
 
@@ -172,7 +173,30 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
     }
 
     consultarVehiculo() {
-        this.formularioCrear = false;
+        this.visible = false;
+        this.formularioCrear = true;
+        this.placaControl.setValue('LOI123');
+        this.paisControl.setValue({ "name": "Colombia", "code": "CO" });
+        this.marcaControl.setValue(this.marcaVehiculos[0]);
+        this.modeloControl.setValue(2012);
+        this.numberoVinControl.setValue('147852369');
+        this.numeroMotorControl.setValue('123456897');
+        this.numeroChasisControl.setValue('23354351');
+        this.numeroSerieControl.setValue('1551513');
+        this.cilindrajeControl.setValue('1400');        
+        this.claseVehiculoControl.setValue(this.claseVehiculos[1]);
+        this.capacidadPasajerosControl.setValue(4);
+        this.capacidadPasajerosSentadosControl.setValue(5);
+        this.tipoServicioControl.setValue(this.tipoServicios[1]);
+        this.tipoCarroceriaControl.setValue(this.tipoCarrocerias[0]);
+    }
+
+    actualizarVehiculo(){
+        this.dialogoRegistro = true;
+    }
+
+    crearVehiculo(){
+
     }
 
 
@@ -200,13 +224,30 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         return this.formVehiculo.get('numeroMotor') as FormControl;
     }
 
-    get claseVehiculoControl(): FormControl {
-        return this.formVehiculo.get('claseVehiculo') as FormControl;
+    get numeroChasisControl(): FormControl {
+        return this.formVehiculo.get('numeroChasis') as FormControl;
     }
 
     get numeroSerieControl(): FormControl {
         return this.formVehiculo.get('numeroSerie') as FormControl;
     }
+
+    get cilindrajeControl(): FormControl {
+        return this.formVehiculo.get('cilindraje') as FormControl;
+    }
+
+    get claseVehiculoControl(): FormControl {
+        return this.formVehiculo.get('claseVehiculo') as FormControl;
+    }
+
+    get capacidadPasajerosControl(): FormControl {
+        return this.formVehiculo.get('capacidadPasajeros') as FormControl;
+    }
+
+    get capacidadPasajerosSentadosControl(): FormControl {
+        return this.formVehiculo.get('capacidadPasajerosSentados') as FormControl;
+    }
+
 
     get tipoServicioControl(): FormControl {
         return this.formVehiculo.get('tipoServicio') as FormControl;

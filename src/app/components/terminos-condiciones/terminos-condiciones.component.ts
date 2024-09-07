@@ -10,19 +10,12 @@ import { NgModule } from '@angular/core';
 export class TerminosCondicionesComponent {
     constructor(private router: Router) { }
     estadoRecaptcha = false;
-    isVisible=false;
-    navegarAInicio() {
-        if (!this.estadoRecaptcha) {
-            this.isVisible=true;
-            // alert('Debes aceptar los terminos y condiciones');
-        } else {
-            this.router.navigate(['/soat/']);
-            this.isVisible=false;
-        }
+   
+    navegarAInicio() {      
+            this.router.navigate(['/soat/']);     
 
     }
     marcarCheck() {
-        this.estadoRecaptcha=!this.estadoRecaptcha; 
-        if(this.estadoRecaptcha){this.isVisible=false;}    
+        this.estadoRecaptcha=!this.estadoRecaptcha;          
     }
 }

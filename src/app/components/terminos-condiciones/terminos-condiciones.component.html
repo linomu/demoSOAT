@@ -6,7 +6,7 @@
     </div>
     <div class="grid ">
         <div class="col-6">
-            <img src="assets/images/bg-1.png" alt="fondo ondas" height="600" />
+            <img src="assets/images/bg-1.png" alt="fondo ondas" height="600" width="100%"/>
         </div>
         <div class="col-6" id="texto">
 
@@ -42,7 +42,7 @@
             <hr>
             <div class="grid ">
                 <div class="col-12 c-centrado">                    
-                    <span class="error" *ngIf="isVisible">Campo obligatorio*</span>                    
+                                    
                     <div id="recaptcha">
                         <label id="robot">
                             <input type="checkbox" (click)="marcarCheck()" id="checkRobot" name="robot" value="no">
@@ -54,8 +54,8 @@
                 </div>
             </div>
             <div class="grid ">
-                <div class="col-12 c-centrado">
-                    <button class="button" (click)="navegarAInicio()">Continuar</button>
+                <div class="col-12 c-centrado">                    
+                    <p-button label="Consultar" (onClick)="navegarAInicio()"  [disabled]="!estadoRecaptcha"/>
                 </div>
             </div>
         </div>

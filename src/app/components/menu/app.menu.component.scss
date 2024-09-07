@@ -1,0 +1,15 @@
+.layout-menu{
+    // background: red;
+}
+.layout-menu>li{
+    // background: rgba(9, 255, 0, 0.683);
+    
+}
+
+.layout-menu ul a {
+    color: #e25b21;
+}
+.layout-menu ul a.active-route {
+    font-weight: 700;
+    color: red;
+}

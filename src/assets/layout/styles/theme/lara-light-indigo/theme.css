@@ -1951,22 +1951,22 @@
 
   .p-button {
     color: #ffffff;
-    background: #6366F1;
-    border: 1px solid #6366F1;
+    background: #ea248c;
+    border: 1px solid #ea248c;
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 6px;
   }
   .p-button:not(:disabled):hover {
-    background: #4F46E5;
+    /* background: #4F46E5; */
     color: #ffffff;
-    border-color: #4F46E5;
+    /* border-color: #4F46E5; */
   }
   .p-button:not(:disabled):active {
-    background: #4338CA;
+    /* background: #4338CA;
     color: #ffffff;
-    border-color: #4338CA;
+    border-color: #4338CA; */
   }
   .p-button.p-button-outlined {
     background-color: transparent;

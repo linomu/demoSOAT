@@ -5,6 +5,7 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html',
+    styleUrl:'./app.menu.component.scss'
 })
 export class AppMenuComponent implements OnInit {
     model: any[] = [];

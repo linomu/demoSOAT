@@ -24,39 +24,42 @@ export class AppMenuComponent implements OnInit {
                     },
                     {
                         label: 'Registrar Datos Vehiculo',
-                        icon: 'pi pi-fw pi-car',
+                        icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/registrar-datos-vehiculo'],
                     },
                     {
-                        label: 'Registrar Datos Propietario',
-                        icon: 'pi pi-fw pi-user',
-                        routerLink: ['/soat/registrar-datos-propietario'],
+                        label: 'Modificar Datos Vehiculo',
+                        icon: 'pi pi-fw pi-circle-fill',
+                        routerLink: ['/soat/registrar-datos-vehiculo/1'],
                     },
                     {
-                        label: 'Consultar Registro',
-                        icon: 'pi pi-fw pi-search',
+                        label: 'Registrar Datos Propietario',
+                        icon: 'pi pi-fw pi-circle-fill',
+                        routerLink: ['/soat/registrar-datos-propietario'],
+                    }, 
+                    {
+                        label: 'Modificar Datos Propietario',
+                        icon: 'pi pi-fw pi-circle-fill',
+                        routerLink: ['/soat/registrar-datos-propietario/1'],
+                    },                                                   
+                   
+                    {
+                        label: 'Consultar Registro-SOAT',
+                        icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/consultar-registro'],
                     },
                     {
                         label: 'Comprar Soat',
-                        icon: 'pi pi-fw pi-shopping-cart',
+                        icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/comprar-soat'],
                     },
-                    {
-                        label: 'Consultar Soat',
-                        icon: 'pi pi-fw pi-search',
-                        routerLink: ['/soat/consultar-soat'],
-                    },
-                    {
-                        label: 'Modificar Datos Vehiculo',
-                        icon: 'pi pi-fw pi-pencil',
-                        routerLink: ['/soat/registrar-datos-vehiculo/1'],
-                    },
-                    {
-                        label: 'Modificar Datos Propietario',
-                        icon: 'pi pi-fw pi-pencil',
-                        routerLink: ['/soat/registrar-datos-propietario/1'],
-                    },
+                    // {
+                    //     label: 'Consultar Soat',
+                    //     icon: 'pi pi-fw pi-search',
+                    //     routerLink: ['/soat/consultar-soat'],
+                    // },
+                    
+                   
                 ],
             },
         ];

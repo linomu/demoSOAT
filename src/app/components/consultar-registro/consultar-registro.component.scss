@@ -1,0 +1,45 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+.c-centrado {
+    display: flex;
+    justify-content: center;
+}
+
+#robot {
+    margin: auto 2px auto auto;  
+    cursor: pointer;  
+}
+#checkRobot{
+    cursor: pointer;
+    
+}
+
+#recaptcha{
+    display: flex;
+    background: #f7f7f7;
+    border: solid 1px;
+    border-color: #e7e3e3;
+    border-radius: 4px;
+}
+.error{
+    color: rgb(166, 5, 5);
+    font-weight: bold;
+}
+#botonesSOAT{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10px;
+}
+#botonesSOAT >p-button{   
+    margin: 10px;
+}

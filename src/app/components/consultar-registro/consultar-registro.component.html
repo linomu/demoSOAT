@@ -1,1 +1,344 @@
-<p>consultar-registro works!</p>
+@if(formularioCrear){
+<div class="card">
+    <h5>Inscripción de registro de los datos del vehículo</h5>
+    <p-divider />
+    <form action="" [formGroup]="formVehiculo">
+        <div class="grid p-fluid mt-3">
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="placa" />
+                    <label for="inputtext">Número de placa</label>
+                    @if(placaControl.invalid && (placaControl.touched || placaControl.dirty)){
+                    <div class="p-error block">
+                        @if(placaControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+
+                    @if(placaControl.hasError('placaVehiculoValidationAsync')){
+                    <div class="p-error block">
+                        <small>Este número de placa ya está registrado en Colombia. La placa no se puede repetir para el
+                            mismo país de origen.</small>
+                    </div>
+                    }
+                    <div *ngIf="placaControl.pending"><small>Consultando en RUNT ...</small></div>
+
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-autoComplete inputId="autocomplete" formControlName="pais" [suggestions]="filteredCountries"
+                        (completeMethod)="searchCountry($event)" field="name"></p-autoComplete>
+                    <label for="autocomplete">País de Origen</label>
+                    @if(paisControl.invalid && (paisControl.touched || paisControl.dirty)){
+                    <div class="p-error block">
+                        @if(paisControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-autoComplete inputId="autocomplete" formControlName="marca"
+                        [suggestions]="filteredMarcaVehiculos" (completeMethod)="searchMarcaVehiculos($event)"
+                        field="nombre"></p-autoComplete>
+                    <label for="autocomplete">Marca</label>
+                    @if(marcaControl.invalid && (marcaControl.touched || marcaControl.dirty)){
+                    <div class="p-error block">
+                        @if(marcaControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-inputNumber inputId="inputnumber" formControlName="modelo"></p-inputNumber>
+                    <label for="inputnumber">Modelo (año)</label>
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="numeroVin" />
+                    <label for="inputtext">Número de VIN</label>
+                    @if(numberoVinControl.invalid && (numberoVinControl.touched || numberoVinControl.dirty)){
+                    <div class="p-error block">
+                        @if(numberoVinControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+                    @if(numberoVinControl.hasError('numeroVinVehiculoValidationAsync')){
+                    <div class="p-error block">
+                        <small>El número VIN ya está registrado en Colombia</small>
+                    </div>
+                    }
+                    <div *ngIf="numberoVinControl.pending"><small>Consultando en RUNT ...</small></div>
+
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="numeroMotor" />
+                    <label for="inputtext">Número de motor</label>
+                    @if(numeroMotorControl.invalid && (numeroMotorControl.touched || numeroMotorControl.dirty)){
+                    <div class="p-error block">
+                        @if(numeroMotorControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="numeroChasis" />
+                    <label for="inputtext">Número de chasis</label>
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="numeroSerie" />
+                    <label for="inputtext">Número de serie</label>
+                </span>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-inputNumber inputId="inputnumber" formControlName="cilindraje"></p-inputNumber>
+                    <label for="inputnumber">Cilindraje</label>
+                </span>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="claseVehiculos"
+                        formControlName="claseVehiculo" optionLabel="name"></p-dropdown>
+                    <label for="dropdown">Clase de vehículo</label>
+                    @if(claseVehiculoControl.invalid && (claseVehiculoControl.touched || claseVehiculoControl.dirty)){
+                    <div class="p-error block">
+                        @if(claseVehiculoControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+                </span>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="capacidadPasajeros" />
+                    <label for="inputtext">Capacidad total de pasajeros</label>
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="capacidadPasajerosSentados" />
+                    <label for="inputtext">Capacidad total de pasajeros sentados</label>
+                </span>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="capacidadCarga" />
+                    <label for="inputtext">Capacidad de carga Kg</label>
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tipoServicios"
+                        formControlName="tipoServicio" optionLabel="name"></p-dropdown>
+                    <label for="dropdown">Tipo de servicio</label>
+                    @if(tipoServicioControl.invalid && (tipoServicioControl.touched || tipoServicioControl.dirty)){
+                    <div class="p-error block">
+                        @if(tipoServicioControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+                </span>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tipoCarrocerias"
+                        formControlName="tipoCarroceria" optionLabel="name"></p-dropdown>
+                    <label for="dropdown">Tipo de carrocería</label>
+                    @if(tipoCarroceriaControl.invalid && (tipoCarroceriaControl.touched ||
+                    tipoCarroceriaControl.dirty)){
+                    <div class="p-error block">
+                        @if(tipoCarroceriaControl.hasError('required')){
+                        <small>Campo requerido</small>
+                        }
+                    </div>
+                    }
+
+                </span>
+            </div>
+
+
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tipoCombustibles"
+                        formControlName="tipoCombustible" optionLabel="name"></p-dropdown>
+                    <label for="dropdown">Tipo de combustible</label>
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tipoRadioOperaciones"
+                        formControlName="tipoRadioOperacion" optionLabel="name"></p-dropdown>
+                    <label for="dropdown">Radio de operación</label>
+                </span>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="flex justify-content-end flex-wrap">
+        <button pButton pRipple type="button" [label]="id ? 'Modificar' : 'Siguiente'" class="p-button-info"
+            [disabled]="!formVehiculo.valid" (click)="mostrarTabla()"></button>
+    </div>
+</div>
+}
+
+@if(datosSoat){
+<h1>SOAT</h1>
+<hr>
+<div>
+    <h1><i class="pi pi-briefcase" style="font-size: 2.5rem"></i> Poliza SOAT</h1>
+</div>
+<table id="tablaSoat">
+    <thead>
+        <tr>
+            <th>Número de póliza</th>
+            <th>Fecha expedición</th>
+            <th>Fecha inicio de vigencia</th>
+            <th>Fecha fin de vigencia</th>
+            <th>Código tarifa</th>
+            <th>Entidad expide SOAT</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Aquí puedes agregar filas de datos -->
+        <tr>
+            <td>1234567</td>
+            <td><i class="pi pi-calendar-minus" style="font-size: 1.5rem"></i>01/01/2024</td>
+            <td><i class="pi pi-calendar-minus" style="font-size: 1.5rem"></i>01/01/2024</td>
+            <td><i class="pi pi-calendar-minus" style="font-size: 1.5rem"></i>01/01/2025</td>
+            <td>LOI123</td>
+            <td>Entidad XYZ</td>
+            <td><i class="pi pi-check-circle" style="font-size: 1rem; color:#90d419;"></i> Vigente</td>
+        </tr>
+        <tr>
+            <td>3214658</td>
+            <td><i class="pi pi-calendar-minus" style="font-size: 1.5rem"></i>01/01/2023</td>
+            <td><i class="pi pi-calendar-minus" style="font-size: 1.5rem"></i>01/01/2023</td>
+            <td><i class="pi pi-calendar-minus" style="font-size: 1.5rem"></i>01/01/2024</td>
+            <td>LOI123</td>
+            <td>Entidad XYZ</td>
+            <td><i class="pi pi-times-circle" style="font-size: 1rem; color: #e2777a;"></i> No Vigente</td>
+        </tr>
+    </tbody>
+</table>
+<div id="botonesSOAT">
+    <p-button label="Descargar PDF" (onClick)="generarPDF()" />
+    <p-button label="Regresar" (onClick)="regresar()" />    
+</div>
+
+}
+
+
+<p-dialog header="Datos para realizar la consulta del registro - SOAT" [modal]="true" [(visible)]="visible"
+    [style]="{ width: '40rem' }">
+    <div class="grid p-fluid mt-3">
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-autoComplete inputId="autocomplete" [(ngModel)]="value2" [suggestions]="filteredCountries"
+                    (completeMethod)="searchCountry($event)" field="name"></p-autoComplete>
+                <label for="autocomplete">País de Origen</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <label for="inputtext">Número de placa</label>
+            </span>
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tiposDocumento"
+                    [(ngModel)]="value10" optionLabel="name"></p-dropdown>
+                <label for="dropdown">Tipo de documento</label>
+            </span>
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-inputNumber inputId="inputnumber" [(ngModel)]="value8"></p-inputNumber>
+                <label for="inputnumber">Numero de documento</label>
+            </span>
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <div class="grid mr-5">
+            <div class="col-12 c-centrado">
+                <span class="error" *ngIf="isVisible">Campo obligatorio*</span>
+                <div id="recaptcha">
+                    <label id="robot">
+                        <input type="checkbox" (click)="marcarCheck()" id="checkRobot" name="robot" value="no">
+                        No soy un robot
+                    </label>
+                    <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" />
+
+                </div>
+            </div>
+        </div>
+        <p-button label="Cancelar" severity="secondary" (onClick)="cancelarBusqueda()" />
+        <p-button label="Consultar" (onClick)="consultarVehiculo()" [disabled]="!estadoRecaptcha" />
+    </div>
+</p-dialog>
+
+
+
+
+<p-dialog header="Generación de PDF  Existosa" [closable]="false" [modal]="true" [(visible)]="dialogoPDF"
+    [style]="{ width: '40rem' }">
+    <div class="flex justify-content-center flex-wrap gap-2">
+        <i class="my-1 pi pi-file-pdf" style="color: rgb(215, 13, 13)"></i>
+        <p>Registro.pdf</p>
+    </div>
+    <div class="mt-3 px-6 text-justify">
+        <h4>Hemos generado exitosamente el documento pdf con los registros de su vehículo.</h4>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Aceptar" severity="secondary" (onClick)="aceptarActualizacion()" />
+    </div>
+</p-dialog>

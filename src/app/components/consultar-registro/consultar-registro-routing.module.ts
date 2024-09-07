@@ -6,8 +6,11 @@ import { ConsultarRegistroComponent } from './consultar-registro.component';
     imports: [
         RouterModule.forChild([
             { path: '', component: ConsultarRegistroComponent },
-        ]),
+        ])
     ],
     exports: [RouterModule],
 })
-export class ConsultarRegistroRoutingModule {}
+export class ConsultarRegistroRoutingModule{
+    
+
+}

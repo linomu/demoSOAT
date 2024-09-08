@@ -6,7 +6,7 @@
     </div>
     <div class="grid ">
         <div class="col-6">
-            <img src="assets/images/bg-1.png" alt="fondo ondas" height="600" width="100%"/>
+            <img src="assets/images/bg-1.png" alt="fondo ondas" height="600" width="100%" />
         </div>
         <div class="col-6" id="texto">
 
@@ -41,24 +41,26 @@
             </p>
             <hr>
             <div class="grid ">
-                <div class="col-12 c-centrado">                    
-                                    
+                <div class="col-12 c-centrado">
+
                     <div id="recaptcha">
-                        <label id="robot">
+                        <re-captcha (resolved)="resolved($event)" siteKey="6Lf80TkqAAAAAD6YHcBb_ImvlOzTd35hdyYy9u6r"></re-captcha><br>
+                        <!-- <label id="robot">
                             <input type="checkbox" (click)="marcarCheck()" id="checkRobot" name="robot" value="no">
                             No soy un robot
                         </label>
-                        <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" />
-                        
+                        <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" /> -->
+
                     </div>
                 </div>
             </div>
             <div class="grid ">
-                <div class="col-12 c-centrado">                    
-                    <p-button label="Consultar" (onClick)="navegarAInicio()"  [disabled]="!estadoRecaptcha"/>
+                <div class="col-12 c-centrado">
+                    <p-button label="Consultar" (onClick)="navegarAInicio()" [disabled]="!estadoRecaptcha" />
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
+
     <app-footer></app-footer>
 </div>

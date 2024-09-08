@@ -276,6 +276,15 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         return this.formVehiculo.get('tipoCarroceria') as FormControl;
     }
 
-
+    nombre: string;
+    email: string;
+    recaptchaResponse: string;
+  
+    resolved(captchaResponse: string) {
+        this.marcarCheck();
+        this.recaptchaResponse = captchaResponse;
+        console.log(`Resolved captcha with response: ${this.recaptchaResponse}`);
+    
+    }
 }
 

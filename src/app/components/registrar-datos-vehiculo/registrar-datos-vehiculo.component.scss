@@ -24,3 +24,10 @@
     color: rgb(166, 5, 5);
     font-weight: bold;
 }
+#botonesModal{
+    align-items: center;
+    display: flex;
+}
+#botonesModal >p-button{   
+    margin: 10px;
+}

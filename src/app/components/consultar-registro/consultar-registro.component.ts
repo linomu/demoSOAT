@@ -295,5 +295,14 @@ export class ConsultarRegistroComponent implements OnInit {
     this.formularioCrear = false;
     this.datosSoat = true;
   }
+  nombre: string;
+  email: string;
+  recaptchaResponse: string;
 
+  resolved(captchaResponse: string) {
+      this.marcarCheck();
+      this.recaptchaResponse = captchaResponse;
+      console.log(`Resolved captcha with response: ${this.recaptchaResponse}`);
+  
+  }
 }

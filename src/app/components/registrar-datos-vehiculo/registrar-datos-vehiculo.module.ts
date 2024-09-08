@@ -18,6 +18,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { DividerModule } from 'primeng/divider';
 import { DialogModule } from 'primeng/dialog';
 import { RegistrarDatosVehiculoComponent } from './registrar-datos-vehiculo.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { RegistrarDatosVehiculoComponent } from './registrar-datos-vehiculo.comp
 		DividerModule,
         RegistrarDatosVehiculoRoutingModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,RecaptchaModule
   ]
 })
 export class RegistrarDatosVehiculoModule { }

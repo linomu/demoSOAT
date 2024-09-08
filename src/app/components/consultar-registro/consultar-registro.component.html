@@ -272,7 +272,7 @@
 
 
 <p-dialog header="Datos para realizar la consulta del registro - SOAT" [modal]="true" [(visible)]="visible"
-    [style]="{ width: '40rem' }">
+    [style]="{ width: '50rem' }">
     <div class="grid p-fluid mt-3">
 
         <div class="field col-12 md:col-6">
@@ -309,20 +309,23 @@
     </div>
     <div class="flex justify-content-end gap-2">
         <div class="grid mr-5">
-            <div class="col-12 c-centrado">
-                <span class="error" *ngIf="isVisible">Campo obligatorio*</span>
-                <div id="recaptcha">
-                    <label id="robot">
+            <div class="field col-12 md:col-7">
+              
+                <!-- <div id="recaptcha"> -->
+                    <re-captcha (resolved)="resolved($event)" siteKey="6Lf80TkqAAAAAD6YHcBb_ImvlOzTd35hdyYy9u6r"></re-captcha><br>
+                    <!-- <label id="robot">
                         <input type="checkbox" (click)="marcarCheck()" id="checkRobot" name="robot" value="no">
                         No soy un robot
                     </label>
-                    <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" />
-
-                </div>
+                    <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" /> -->
+                <!-- </div> -->
+            </div>
+            <div class="field col-12 md:col-5" id="botonesModal">
+                <p-button label="Cancelar" severity="secondary" (onClick)="cancelarBusqueda()" />
+                <p-button label="Consultar" (onClick)="consultarVehiculo()" [disabled]="!estadoRecaptcha" />
             </div>
         </div>
-        <p-button label="Cancelar" severity="secondary" (onClick)="cancelarBusqueda()" />
-        <p-button label="Consultar" (onClick)="consultarVehiculo()" [disabled]="!estadoRecaptcha" />
+        
     </div>
 </p-dialog>
 

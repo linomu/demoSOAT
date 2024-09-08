@@ -18,6 +18,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
     declarations: [ConsultarRegistroComponent],
@@ -42,6 +43,6 @@ import { MultiSelectModule } from 'primeng/multiselect';
 		InputGroupAddonModule,
 		DividerModule,        
 		FormsModule,
-		ReactiveFormsModule],
+		ReactiveFormsModule,RecaptchaModule],
 })
 export class ConsultarRegistroModule { }

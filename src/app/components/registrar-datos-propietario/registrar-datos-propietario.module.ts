@@ -10,6 +10,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RegistrarDatosPropietarioRoutingModule } from './registrar-datos-propietario-routing.module';
 import { RegistrarDatosPropietarioComponent } from './registrar-datos-propietario.component';
 import { DialogModule } from 'primeng/dialog';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
     declarations: [RegistrarDatosPropietarioComponent],
@@ -24,6 +26,8 @@ import { DialogModule } from 'primeng/dialog';
         ButtonModule,
         ReactiveFormsModule,
         DialogModule,
+        RecaptchaModule,
+        AutoCompleteModule,
     ],
 })
 export class RegistrarDatosPropietarioModule {}

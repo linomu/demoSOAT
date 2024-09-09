@@ -20,29 +20,29 @@ import { DialogModule } from 'primeng/dialog';
 import { RegistrarDatosVehiculoComponent } from './registrar-datos-vehiculo.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 
-
 @NgModule({
-  declarations: [RegistrarDatosVehiculoComponent],
-  imports: [
-    CommonModule,
-		FormsModule,
-		AutoCompleteModule,
-		CalendarModule,
-		ChipsModule,
-		DropdownModule,
-		DialogModule,
-		InputMaskModule,
-		InputNumberModule,
-		CascadeSelectModule,
-		MultiSelectModule,
-		InputTextareaModule,
-		InputTextModule,
-		InputGroupModule,
-		InputGroupAddonModule,
-		DividerModule,
+    declarations: [RegistrarDatosVehiculoComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AutoCompleteModule,
+        CalendarModule,
+        ChipsModule,
+        DropdownModule,
+        DialogModule,
+        InputMaskModule,
+        InputNumberModule,
+        CascadeSelectModule,
+        MultiSelectModule,
+        InputTextareaModule,
+        InputTextModule,
+        InputGroupModule,
+        InputGroupAddonModule,
+        DividerModule,
         RegistrarDatosVehiculoRoutingModule,
-		FormsModule,
-		ReactiveFormsModule,RecaptchaModule
-  ]
+        FormsModule,
+        ReactiveFormsModule,
+        RecaptchaModule,
+    ],
 })
-export class RegistrarDatosVehiculoModule { }
+export class RegistrarDatosVehiculoModule {}

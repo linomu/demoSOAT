@@ -1,3 +1,4 @@
+@if (!visibleModificar) {
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="card">
         <h5>{{title}}</h5>
@@ -66,11 +67,13 @@
             </div>
         </div>
         <section class="btn-section">
-            <button pButton pRipple type="button" label="Anterior" class="p-button-outlined"></button>
+            <button pButton pRipple type="button" (click)="volver()" label="Anterior"
+                class="p-button-outlined"></button>
             <button pButton pRipple type="submit" [label]="btn_title" class="p-button-info"></button>
         </section>
     </div>
 </form>
+}
 
 <p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '60rem' }" class="dialog-section">
     <p>
@@ -79,4 +82,53 @@
     <p>
         Se realizó el envió de correo electrónico al propietario del vehículo con la modificación.
     </p>
+</p-dialog>
+
+<p-dialog header="Modificar Información" [modal]="true" [(visible)]="visibleModificar" [style]="{ width: '40rem' }">
+    <div class="grid p-fluid mt-3">
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-autoComplete inputId="autocomplete" [(ngModel)]="pais" [suggestions]="filteredCountries"
+                    (completeMethod)="searchCountry($event)" field="name"></p-autoComplete>
+                <label for="autocomplete">País de Origen</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText [(ngModel)]="placa" />
+                <label for="inputtext">Número de placa</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="tiposDocumento"
+                    [(ngModel)]="tipoDocumentoC" optionLabel="name"></p-dropdown>
+                <label for="dropdown">Tipo de documento</label>
+            </span>
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <span class="p-float-label">
+                <p-inputNumber inputId="inputnumber" [(ngModel)]="numeroDocumento"></p-inputNumber>
+                <label for="inputnumber">Numero de documento</label>
+            </span>
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <div class="grid mr-5">
+            <div class="field col-12 md:col-7">
+                <re-captcha (resolved)="resolved($event)"
+                    siteKey="6Lf80TkqAAAAAD6YHcBb_ImvlOzTd35hdyYy9u6r"></re-captcha><br>
+            </div>
+            <div class="field col-12 md:col-5" id="botonesModal">
+                <p-button label="Cancelar" severity="secondary" (onClick)="cancelarBusqueda()" />
+                <p-button label="Consultar" (onClick)="consultarPropietario()" [disabled]="!estadoRecaptcha" />
+            </div>
+
+        </div>
+
+    </div>
 </p-dialog>

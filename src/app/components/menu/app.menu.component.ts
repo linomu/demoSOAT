@@ -5,17 +5,20 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html',
-    styleUrl:'./app.menu.component.scss'
+    styleUrl: './app.menu.component.scss'
 })
 export class AppMenuComponent implements OnInit {
     model: any[] = [];
     menu_model: any[] = [];
 
-    constructor(public layoutService: LayoutService) {}
+    constructor(public layoutService: LayoutService) { }
 
     ngOnInit() {
         this.menu_model = [
+
             {
+                label: 'Auto-registro vehículos de forntera Colombia',
+               
                 items: [
                     {
                         label: 'Inicio',
@@ -23,12 +26,12 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/soat'],
                     },
                     {
-                        label: 'Registrar Datos Vehiculo',
+                        label: 'Registrar Datos del Vehículo y Propietario',
                         icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/registrar-datos-vehiculo'],
                     },
                     {
-                        label: 'Modificar Datos Vehiculo',
+                        label: 'Modificar Datos del Vehículo Registrado',
                         icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/registrar-datos-vehiculo/1'],
                     },
@@ -36,20 +39,20 @@ export class AppMenuComponent implements OnInit {
                         label: 'Registrar Datos Propietario',
                         icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/registrar-datos-propietario'],
-                    }, 
-                    {
-                        label: 'Modificar Datos Propietario',
+                    },
+                   {
+                        label: 'Cambiar Propietario a Vehículo Registrado ',
                         icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/registrar-datos-propietario/1'],
-                    },                                                   
-                   
+                    },
+
                     {
-                        label: 'Consultar Registro-SOAT',
+                        label: 'Consultar Registro Vehículo Frontera-SOAT',
                         icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/consultar-registro'],
                     },
                     {
-                        label: 'Comprar Soat',
+                        label: 'Comprar SOAT',
                         icon: 'pi pi-fw pi-circle-fill',
                         routerLink: ['/soat/comprar-soat'],
                     },
@@ -58,8 +61,8 @@ export class AppMenuComponent implements OnInit {
                     //     icon: 'pi pi-fw pi-search',
                     //     routerLink: ['/soat/consultar-soat'],
                     // },
-                    
-                   
+
+
                 ],
             },
         ];

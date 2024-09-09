@@ -94,7 +94,7 @@ export class RegistrarDatosPropietarioComponent {
 
     cargarDatosFormulario() {
         this.visibleModificar = true;
-        this.title = 'Modificación de registro de los datos del propietario';
+        this.title = 'Datos del Propietario';
         this.btn_title = 'Modificar';
         this.myForm.patchValue({
             tipoDocumento: this.usuario1.tipoDocumento,

@@ -1,8 +1,8 @@
 @if(formularioCrear){
 <div class="card">
-    <h5>Inscripción general del vehículo</h5>
+    <h5>Información general del vehículo</h5>
     <p-divider />
-    <form action="" [formGroup]="formVehiculo">
+    <form action="" [formGroup]="formVehiculo" >
         <div class="grid p-fluid mt-3">
 
             <div class="field col-12 md:col-4">
@@ -214,11 +214,10 @@
             </div>
 
         </div>
-    </form>
-
+    </form>       
     <div class="flex justify-content-end flex-wrap">
-        <button pButton pRipple type="button" [label]="id ? 'Modificar' : 'Siguiente'" class="p-button-info"
-            [disabled]="!formVehiculo.valid" (click)="mostrarTabla()"></button>
+        <button id="botonSiguiente" pButton pRipple type="button" [label]="id ? 'Modificar' : 'Siguiente'" class="p-button-info"
+            [disabled]="formVehiculo.valid" (click)="mostrarTabla()"></button>
     </div>
 </div>
 }

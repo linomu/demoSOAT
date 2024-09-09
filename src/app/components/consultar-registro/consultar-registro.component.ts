@@ -215,6 +215,7 @@ export class ConsultarRegistroComponent implements OnInit {
     this.tipoCarroceriaControl.setValue(this.tipoCarrocerias[0]);
     this.tipoCombustible.setValue(this.tipoCombustibles[0]);
     this.tipoRadioOperacion.setValue(this.tipoRadioOperaciones[0]);
+    this.formVehiculo.disable();
   }
 
   actualizarVehiculo() {
@@ -291,7 +292,7 @@ export class ConsultarRegistroComponent implements OnInit {
   get capacidadCarga(): FormControl {
     return this.formVehiculo.get('capacidadCarga') as FormControl;
   }
- 
+
 
   get tipoServicioControl(): FormControl {
     return this.formVehiculo.get('tipoServicio') as FormControl;

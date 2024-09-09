@@ -72,15 +72,19 @@ export class ConsultarRegistroComponent implements OnInit {
     private vehiculoService: VehiculoService,
     private router: Router) {
     this.tiposDocumento = [
-      { name: 'Cedula', code: 'CC' },
+      { name: 'Cédula de ciudadanía', code: 'CC' },
       { name: 'Tarjeta de identidad', code: 'TI' },
-      { name: 'Pasaporte', code: 'PA' }
-
+      { name: 'Cédula de extranjería', code: 'CE' },
+      { name: 'Pasaporte', code: 'PA' },
+      { name: 'Registro civil', code: 'RC' },
+      { name: 'NIT', code: 'NIT' },
+      { name: 'Permiso Protección Temportal', code: 'PPT' },
     ];
     this.claseVehiculos = [
+      { name: 'Motocicleta', code: 'mot' },
       { name: 'Camioneta', code: 'cam' },
-      { name: 'Vehiculo', code: 'veh' },
-      { name: 'Transporte', code: 'tra' },
+      { name: 'Automovil', code: 'aut' },
+      { name: 'Buseta', code: 'bus' },
     ];
     this.tipoServicios = [
       { name: 'Publico', code: 'pub' },
@@ -125,9 +129,9 @@ export class ConsultarRegistroComponent implements OnInit {
   }, []);
 
   ngOnInit() {
-     this.abrirModalConsulta();
+    this.abrirModalConsulta();
     this.formularioCrear = false;
-    this.datosSoat=false;
+    this.datosSoat = false;
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = +params.get('id');
       if (this.id) {
@@ -206,8 +210,11 @@ export class ConsultarRegistroComponent implements OnInit {
     this.claseVehiculoControl.setValue(this.claseVehiculos[1]);
     this.capacidadPasajerosControl.setValue(4);
     this.capacidadPasajerosSentadosControl.setValue(5);
+    this.capacidadCarga.setValue(1000);
     this.tipoServicioControl.setValue(this.tipoServicios[1]);
     this.tipoCarroceriaControl.setValue(this.tipoCarrocerias[0]);
+    this.tipoCombustible.setValue(this.tipoCombustibles[0]);
+    this.tipoRadioOperacion.setValue(this.tipoRadioOperaciones[0]);
   }
 
   actualizarVehiculo() {
@@ -281,7 +288,10 @@ export class ConsultarRegistroComponent implements OnInit {
   get capacidadPasajerosSentadosControl(): FormControl {
     return this.formVehiculo.get('capacidadPasajerosSentados') as FormControl;
   }
-
+  get capacidadCarga(): FormControl {
+    return this.formVehiculo.get('capacidadCarga') as FormControl;
+  }
+ 
 
   get tipoServicioControl(): FormControl {
     return this.formVehiculo.get('tipoServicio') as FormControl;
@@ -289,6 +299,12 @@ export class ConsultarRegistroComponent implements OnInit {
 
   get tipoCarroceriaControl(): FormControl {
     return this.formVehiculo.get('tipoCarroceria') as FormControl;
+  }
+  get tipoCombustible(): FormControl {
+    return this.formVehiculo.get('tipoCombustible') as FormControl;
+  }
+  get tipoRadioOperacion(): FormControl {
+    return this.formVehiculo.get('tipoRadioOperacion') as FormControl;
   }
 
   mostrarTabla() {
@@ -300,9 +316,9 @@ export class ConsultarRegistroComponent implements OnInit {
   recaptchaResponse: string;
 
   resolved(captchaResponse: string) {
-      this.marcarCheck();
-      this.recaptchaResponse = captchaResponse;
-      console.log(`Resolved captcha with response: ${this.recaptchaResponse}`);
-  
+    this.marcarCheck();
+    this.recaptchaResponse = captchaResponse;
+    console.log(`Resolved captcha with response: ${this.recaptchaResponse}`);
+
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RCService } from 'src/app/services/app.rc.service';
 
 @Component({
     selector: 'app-terminos-condiciones',
@@ -8,7 +9,9 @@ import { NgModule } from '@angular/core';
     styleUrl: './terminos-condiciones.component.scss',
 })
 export class TerminosCondicionesComponent {
-    constructor(private router: Router) { }
+    constructor(private router: Router,
+        private recaptchaService: RCService,
+    ) { }
     estadoRecaptcha = false;
 
     navegarAInicio() {
@@ -23,10 +26,23 @@ export class TerminosCondicionesComponent {
     recaptchaResponse: string;
 
     resolved(captchaResponse: string) {
-        this.marcarCheck();
+        
         this.recaptchaResponse = captchaResponse;
-        console.log(`Resolved captcha with response: ${this.recaptchaResponse}`);
-    
+        let rs = this.recaptchaService.verifyToken(captchaResponse);
+        rs.subscribe({
+            next: (v) => {                
+                // alert(v.success);
+                if(v.success){
+                    this.estadoRecaptcha=true;
+                }else{
+                   this.estadoRecaptcha=false;
+                   alert('Prueba recaptcha no superada');
+                }
+            },
+            error: (e) => console.error(e),
+            complete: () => console.info('complete')
+        }
+        ); 
     }
 
 }

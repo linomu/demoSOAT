@@ -1,0 +1,11 @@
+{
+    "/recaptcha": {
+      "target": "https://www.google.com",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/recaptcha": "/recaptcha/api/siteverify"
+      }
+    }
+  }
+  

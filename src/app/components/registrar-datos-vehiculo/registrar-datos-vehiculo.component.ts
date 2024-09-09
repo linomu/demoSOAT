@@ -64,7 +64,7 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
         private countryService: CountryService,
         private marcaVehiculoService: MarcaVehiculoService,
         private route: ActivatedRoute,
-        private vehiculoService: VehiculoService,
+        private vehiculoService: VehiculoService,      
         private router: Router) {
         this.cities = [
             { name: 'New York', code: 'NY' },
@@ -283,7 +283,7 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
   
     resolved(captchaResponse: string) {
         this.marcarCheck();
-        this.recaptchaResponse = captchaResponse;
+        this.recaptchaResponse = captchaResponse;       
         console.log(`Resolved captcha with response: ${this.recaptchaResponse}`);
     
     }

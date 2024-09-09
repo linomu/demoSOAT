@@ -18,13 +18,14 @@ import { AppLayoutModule } from './components/layout/app.layout.module';
 import { MarcaVehiculoService } from './demo/service/marca-vehiculo.service';
 
 import { FooterModule } from './components/footer/footer.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
     imports: [
         AppRoutingModule,
         AppLayoutModule,
-        FooterModule],
+        FooterModule,HttpClientModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService,

@@ -48,6 +48,7 @@ export class RegistrarDatosPropietarioComponent {
             { name: 'Pasaporte', code: 'PA' },
             { name: 'Registro civil', code: 'RC' },
             { name: 'NIT', code: 'NIT' },
+            { name: 'Permiso Protección Temportal', code: 'PPT' },
         ];
 
         this.title = 'Inscripción de registro de los datos del propietario';

@@ -74,9 +74,10 @@ export class RegistrarDatosVehiculoComponent implements OnInit {
             { name: 'Paris', code: 'PRS' }
         ];
         this.claseVehiculos = [
+            { name: 'Motocicleta', code: 'mot' },
             { name: 'Camioneta', code: 'cam' },
-            { name: 'Vehiculo', code: 'veh' },
-            { name: 'Transporte', code: 'tra' },
+            { name: 'Automovil', code: 'aut' },
+            { name: 'Buseta', code: 'bus' },
         ];
         this.tipoServicios = [
             { name: 'Publico', code: 'pub' },

@@ -245,7 +245,7 @@
 
         <div class="field col-12 md:col-6">
             <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value10"
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="claseVehiculos" [(ngModel)]="value10"
                     optionLabel="name"></p-dropdown>
                 <label for="dropdown">Clase de vehículo</label>
             </span>
@@ -264,15 +264,6 @@
             <div class="field col-12 md:col-7">
                 <re-captcha (resolved)="resolved($event)"
                     siteKey="6Lf80TkqAAAAAD6YHcBb_ImvlOzTd35hdyYy9u6r"></re-captcha><br>
-                <!-- <span class="error" *ngIf="isVisible">Campo obligatorio*</span>                    
-                <div id="recaptcha">
-                    <label id="robot">
-                        <input type="checkbox" (click)="marcarCheck()" id="checkRobot" name="robot" value="no">
-                        No soy un robot
-                    </label>
-                    <img src="assets/images/recaptcha.PNG" alt="fondo ondas" height="50" />
-                    
-                </div> -->
             </div>
             <div class="field col-12 md:col-5" id="botonesModal">
                 <p-button label="Cancelar" severity="secondary" (onClick)="cancelarBusqueda()" />

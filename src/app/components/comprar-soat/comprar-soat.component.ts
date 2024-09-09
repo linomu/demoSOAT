@@ -57,7 +57,6 @@ export class ComprarSoatComponent {
 
     seleccionarAseguradora(item: any) {
         console.log('Seleccionar aseguradora');
-        //redirigir a una url externa que se encuentra en el objeto con el atributo url
         window.open(item.url, '_blank');
     }
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { CountryService } from 'src/app/demo/service/country.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
     selector: 'app-registrar-datos-propietario',
@@ -37,7 +36,11 @@ export class RegistrarDatosPropietarioComponent {
         correo: 'raba@prueba.co',
     };
 
-    constructor(private fb: FormBuilder, private route: ActivatedRoute) {
+    constructor(
+        private fb: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router
+    ) {
         this.tiposDocumento = [
             { name: 'Cédula de ciudadanía', code: 'CC' },
             { name: 'Tarjeta de identidad', code: 'TI' },
@@ -88,10 +91,11 @@ export class RegistrarDatosPropietarioComponent {
         if (this.myForm.valid) {
             if (!this.funcion_registrar) {
                 this.abrirModalModificacion();
+            } else {
+                this.router.navigate(['/soat/comprar-soat']);
             }
-            console.log(this.myForm.value);
         } else {
-            console.log('Form not valid');
+            this.myForm.markAllAsTouched();
         }
     }
 

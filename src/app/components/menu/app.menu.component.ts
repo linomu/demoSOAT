@@ -15,16 +15,24 @@ export class AppMenuComponent implements OnInit {
 
     ngOnInit() {
         this.menu_model = [
-
             {
-                label: 'Auto-registro vehículos de forntera Colombia',
-               
+                // label: 'Home',
                 items: [
                     {
                         label: 'Inicio',
                         icon: 'pi pi-fw pi-home',
                         routerLink: ['/soat'],
                     },
+                ],
+            },
+            {
+                label: 'Auto-registro Vehículos de Frontera Colombia',               
+                items: [
+                    // {
+                    //     label: 'Inicio',
+                    //     icon: 'pi pi-fw pi-home',
+                    //     routerLink: ['/soat'],
+                    // },
                     {
                         label: 'Registrar Datos del Vehículo y Propietario',
                         icon: 'pi pi-fw pi-circle-fill',

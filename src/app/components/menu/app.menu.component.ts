@@ -26,7 +26,7 @@ export class AppMenuComponent implements OnInit {
                 ],
             },
             {
-                label: 'Auto-registro Vehículos de Frontera Colombia',               
+                label: '­╚≡ Auto-registro Vehículos de Frontera Colombia',               
                 items: [
                     // {
                     //     label: 'Inicio',
